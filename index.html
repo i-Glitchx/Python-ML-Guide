@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprehensive Guide to Machine Learning with Python</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('navbar-toggle');
+            const navbar = document.getElementById('navbar');
+            toggleButton.addEventListener('click', function() {
+                navbar.classList.toggle('expanded');
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+</head>
+<body>
+    <button id="navbar-toggle">Toggle Navigation</button>
+    <nav id="navbar">
+        <header>
+            <img src="https://img.icons8.com/ios-filled/50/000000/python.png" alt="Python Logo" style="width:30px; vertical-align:middle;"> Machine Learning with Python
+        </header>
+        <a class="nav-link" href="#Introduction">Introduction</a>
+        <a class="nav-link" href="#Supervised_Learning">Supervised Learning</a>
+        <a class="nav-link" href="#Unsupervised_Learning">Unsupervised Learning</a>
+        <a class="nav-link" href="#Reinforcement_Learning">Reinforcement Learning</a>
+        <a class="nav-link" href="#Deep_Learning">Deep Learning</a>
+        <a class="nav-link" href="#Model_Evaluation">Model Evaluation</a>
+        <a class="nav-link" href="#Python_Libraries">Python Libraries for Machine Learning</a>
+        <a class="nav-link" href="#Conclusion">Conclusion</a>
+    </nav>
+
+    <main id="main-doc">
+        <section class="main-section" id="Introduction">
+            <header>
+                <img src="https://img.icons8.com/ios-filled/50/000000/info.png" alt="Introduction Icon" style="width:20px; vertical-align:middle;"> Introduction
+            </header>
+            <p>Machine Learning (ML) is a branch of artificial intelligence (AI) that enables computers to learn from data and make predictions or decisions without being explicitly programmed for specific tasks. It is widely used in various fields including finance, healthcare, marketing, and technology to solve complex problems through predictive modeling and pattern recognition.</p>
+            <p>Python is one of the most popular languages for ML due to its ease of use and the availability of numerous ML libraries such as <code>scikit-learn</code>, <code>TensorFlow</code>, <code>PyTorch</code>, and <code>Keras</code>. These libraries offer pre-built functions and tools to help implement a wide range of machine learning models and algorithms.</p>
+        </section>
+
+        <section class="main-section" id="Supervised_Learning">
+            <header>
+                <img src="https://img.icons8.com/ios-filled/50/000000/training.png" alt="Supervised Learning Icon" style="width:20px; vertical-align:middle;"> Supervised Learning
+            </header>
+            <p>Supervised learning involves using labeled data to train a model, where the label represents the expected outcome. The goal is for the model to learn a mapping from inputs to outputs, so it can make accurate predictions on new, unseen data.</p>
+            <p>Common supervised learning algorithms include:</p>
+            <ul>
+                <li>Linear Regression: Used for predicting continuous values, e.g., predicting house prices based on features like size and location.</li>
+                <li>Decision Trees: A non-linear algorithm used for both classification and regression, which splits data into subsets based on feature values.</li>
+                <li>Support Vector Machines (SVM): A powerful classification technique that finds the optimal hyperplane to separate classes.</li>
+            </ul>
+            <p>Example of Linear Regression in Python:</p>
+            <pre><code class="language-python">
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+            </code></pre>
+        </section>
+
+        <section class="main-section" id="Unsupervised_Learning">
+            <header>
+                <img src="images/unsupervised-learning.png" alt="Unsupervised Learning Icon" style="width:20px; vertical-align:middle;"> Unsupervised Learning
+            </header>
+            <p>Unsupervised learning deals with unlabeled data, where the goal is to identify hidden patterns or relationships within the data. These algorithms are particularly useful for clustering or association tasks.</p>
+            <p>Popular unsupervised learning algorithms include:</p>
+            <ul>
+                <li><b>K-Means Clustering</b>: Partitions data into <code>k</code> clusters, where each data point belongs to the cluster with the nearest mean.</li>
+                <li><b>Principal Component Analysis (PCA)</b>: A dimensionality reduction technique that helps reduce the number of features in the data while retaining important information.</li>
+            </ul>
+            <p>Example of K-Means Clustering in Python:</p>
+            <pre><code class="language-python">
+from sklearn.cluster import KMeans
+kmeans = KMeans(n_clusters=3)
+kmeans.fit(X)
+labels = kmeans.labels_
+            </code></pre>
+        </section>
+
+        <section class="main-section" id="Reinforcement_Learning">
+            <header>
+                <img src="images/reinforcement-learning.png" alt="Reinforcement Learning Icon" style="width:20px; vertical-align:middle;"> Reinforcement Learning
+            </header>
+            <p>Reinforcement Learning (RL) is a type of learning where an agent learns to make decisions by performing certain actions in an environment to maximize cumulative rewards. Unlike supervised learning, RL does not require labeled input/output pairs; instead, the agent receives feedback in the form of rewards or penalties.</p>
+            <p>Applications of RL include game playing (e.g., AlphaGo), robotics, and self-driving cars.</p>
+            <p>Python frameworks like <code>OpenAI Gym</code> provide tools for developing and comparing RL algorithms in simulated environments.</p>
+        </section>
+
+        <section class="main-section" id="Deep_Learning">
+            <header>
+                <img src="images/deep-learning.png" alt="Deep Learning Icon" style="width:20px; vertical-align:middle;"> Deep Learning
+            </header>
+            <p>Deep Learning is a subfield of ML that uses artificial neural networks with many layers (hence "deep"). These models are capable of learning complex features from large datasets and are used for tasks such as image recognition, natural language processing, and more.</p>
+            <p>Python frameworks such as <code>TensorFlow</code> and <code>PyTorch</code> are widely used for building deep learning models.</p>
+            <p>Example of a simple feedforward neural network using PyTorch:</p>
+            <pre><code class="language-python">
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+# Defining a simple neural network
+class SimpleNN(nn.Module):
+    def __init__(self, input_size=10, hidden_size=5, output_size=1):
+        super(SimpleNN, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, output_size)
+    
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+model = SimpleNN(input_size=10, hidden_size=5, output_size=1)
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+loss_function = nn.MSELoss()
+            </code></pre>
+        </section>
+
+        <section class="main-section" id="Model_Evaluation">
+            <header>
+                <img src="images/evaluation.png" alt="Model Evaluation Icon" style="width:20px; vertical-align:middle;"> Model Evaluation
+            </header>
+            <p>Evaluating a model's performance is crucial to ensure that it generalizes well to new data and does not overfit or underfit. Evaluation metrics vary depending on the type of problem being solved.</p>
+            <p>Common evaluation metrics include:</p>
+            <ul>
+                <li><b>Accuracy</b>: The ratio of correctly predicted instances to the total instances.</li>
+                <li><b>Precision</b>: The ratio of correctly predicted positive observations to the total predicted positives.</li>
+                <li><b>Recall</b>: The ratio of correctly predicted positive observations to all the observations in the actual class.</li>
+                <li><b>F1-score</b>: The weighted average of Precision and Recall, particularly useful when class distribution is imbalanced.</li>
+            </ul>
+            <p>Example of calculating accuracy:</p>
+            <pre><code class="language-python">
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+            </code></pre>
+        </section>
+
+        <section class="main-section" id="Python_Libraries">
+            <header>
+                <img src="https://img.icons8.com/ios-filled/50/000000/library.png" alt="Python Libraries Icon" style="width:20px; vertical-align:middle;"> Python Libraries for Machine Learning
+            </header>
+            <p>Python offers a wide array of libraries that simplify machine learning development:</p>
+            <ul>
+                <li><code>scikit-learn</code>: A library offering simple and efficient tools for data analysis and modeling.</li>
+                <li><code>TensorFlow</code>: An open-source library developed by Google for deep learning and neural network modeling.</li>
+                <li><code>PyTorch</code>: Developed by Facebook, PyTorch is known for its dynamic computation graph, making it very flexible for research and prototyping.</li>
+                <li><code>pandas</code> and <code>NumPy</code>: These are fundamental data handling libraries that provide support for data manipulation and numerical operations.</li>
+                <li><code>matplotlib</code> and <code>seaborn</code>: Libraries for data visualization that can be useful for exploring data and interpreting model outputs.</li>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Conclusion">
+            <header>
+                <img src="images/lightbulb.png" alt="Conclusion Icon" style="width:20px; vertical-align:middle;"> Conclusion
+            </header>
+            <p>Machine Learning with Python provides a versatile environment for creating robust predictive models and data-driven solutions. With the vast number of tools and libraries available, Python continues to be a leading choice for machine learning and artificial intelligence applications.</p>
+            <p>Whether you're building a simple regression model or experimenting with deep neural networks, Python's community support and extensive library ecosystem make it easier than ever to get started.</p>
+        </section>
+    </main>
+</body>
+</html>
